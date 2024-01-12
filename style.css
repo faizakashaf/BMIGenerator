@@ -1,0 +1,70 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+header{
+    text-align: center;
+    padding: 0.5rem; 
+    margin-top: 5%; 
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem auto;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+     width: 40%;
+}
+form span input{
+ border: 2px solid rgba(211, 207, 207, 0.695);
+ padding: 0.5rem;
+ border-radius: 0.3rem;
+ outline: none;
+ margin: 0.5rem;
+ width: 100%;
+ font-size: 1rem;
+}
+input::placeholder{
+    font-size: 1rem;
+}
+input:hover{
+  box-shadow: 2px 2px 4px rgba(149, 143, 143, 0.5);
+
+}
+.measureBtn{
+padding: 0.4rem;
+font-size:1rem;
+border-radius: 0.2rem;
+border: none;
+margin:0.5rem ;
+background-color: lightcyan;
+}
+.result {
+ display: none;
+font-size: 1.2rem;
+margin: 0.6rem;
+}
+
+.status{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.2rem; 
+}
+.status h3{
+    font-size: 1.2rem;
+    display: none;
+    
+}
+.status:nth-child(2){
+    font-size: 1.2rem;
+}

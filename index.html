@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Generator</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <header>
+        <h1>BMI Generator</h1>
+    </header>
+    <main>
+        <div class="form">
+            <form>
+                <span>
+                    <input autocomplete="off" id="weight" type="text" name="weight" placeholder="Your Weight"
+                        oninput="validateNum(this)">
+                </span>
+                <span>
+                    <input autocomplete="off" id="height" type="text" name="height" placeholder="height in meter" ;
+                        oninput="validateNum(this)">
+                </span>
+                <input type="button" value="Generate" class="measureBtn">
+                <div class="result"></div>
+            </form>
+
+
+        </div>
+
+        <div class="status">
+            <h3>Your BMI Status:</h3>
+            <div id="bmiStatus"></div>
+        </div>
+    </main>
+
+    <script>
+        const weight = document.querySelector("#weight");
+        const height = document.querySelector("#height");
+        const result = document.querySelector(".result")
+        const measureBtn = document.querySelector(".measureBtn");
+        const bmiStatus = document.querySelector("#bmiStatus");
+        const statusHeading = document.querySelector("h3");
+
+
+        measureBtn.addEventListener("click", function () {
+
+            if (weight.value == "" && height.value == "") {
+                alert("Please fill the inputs")
+            }
+            else {
+                function measure(wgt, hgt) {
+                    const messure = (Number((wgt) / hgt ** 2)).toFixed(2);
+                    result.innerHTML = "Result: " + messure + " " + "kg/m<sup>2</sup>";
+                    result.style.display = "block";
+
+                    if (messure < 18.5) {
+                        bmiStatus.innerHTML = "Underweight \u{1F61F}";
+
+                    }
+                    else if (messure >= 18.5 && messure <= 25.9) {
+                        bmiStatus.innerHTML = "Healthy weight \u{1F603}";
+
+                    }
+                    else if (messure >= 26 && messure <= 29.9) {
+                        bmiStatus.innerHTML = "Overweight \u{1F642}";
+                    }
+                    else if (messure >= 30 && messure <= 40) {
+                        bmiStatus.innerHTML = "Obesity \u{1F62E}";
+                    }
+                    else if (messure >= 40) {
+                        bmiStatus.innerHTML = "Severe Obesity \u{1F630}";
+                    }
+                    statusHeading.style.display = "block";
+
+                }
+                measure(weight.value, height.value)
+            }
+        })
+        function validateNum(input) {
+            input.value = input.value.replace(/[^0-9]/g, '');
+        }
+
+
+    </script>
+</body>
+
+</html>
