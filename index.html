@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BMI Generator</title>
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -16,13 +19,24 @@
         <div class="form">
             <form>
                 <span>
-                    <input autocomplete="off" id="weight" type="text" name="weight" placeholder="Your Weight"
+                    <input autocomplete="off" id="weight" type="text" name="weight" placeholder=" Enter your Weight"
                         oninput="validateNum(this)">
                 </span>
                 <span>
-                    <input autocomplete="off" id="height" type="text" name="height" placeholder="height in meter" ;
-                        oninput="validateNum(this)">
+                    <select name="heightunit" id="heightunit">
+                        <option value="Select unit" selected disabled>Select height unit</option>
+                        <option class="unit" value="m">m</option>
+                        <option class="unit" value="cm">cm</option>
+                        <option class="unit" value="feet">ft</option>
+                        <option class="unit" value="inch">inch</option>
+                    </select>
                 </span>
+                <span class="inputIcon">
+                    <input autocomplete="off" id="height" type="text" name="height" placeholder="Enter your height"
+                        oninput="validateNum(this)">
+
+                </span>
+
                 <input type="button" value="Generate" class="measureBtn">
                 <div class="result"></div>
             </form>
@@ -36,55 +50,7 @@
         </div>
     </main>
 
-    <script>
-        const weight = document.querySelector("#weight");
-        const height = document.querySelector("#height");
-        const result = document.querySelector(".result")
-        const measureBtn = document.querySelector(".measureBtn");
-        const bmiStatus = document.querySelector("#bmiStatus");
-        const statusHeading = document.querySelector("h3");
-
-
-        measureBtn.addEventListener("click", function () {
-
-            if (weight.value == "" && height.value == "") {
-                alert("Please fill the inputs")
-            }
-            else {
-                function measure(wgt, hgt) {
-                    const messure = (Number((wgt) / hgt ** 2)).toFixed(2);
-                    result.innerHTML = "Result: " + messure + " " + "kg/m<sup>2</sup>";
-                    result.style.display = "block";
-
-                    if (messure < 18.5) {
-                        bmiStatus.innerHTML = "Underweight \u{1F61F}";
-
-                    }
-                    else if (messure >= 18.5 && messure <= 25.9) {
-                        bmiStatus.innerHTML = "Healthy weight \u{1F603}";
-
-                    }
-                    else if (messure >= 26 && messure <= 29.9) {
-                        bmiStatus.innerHTML = "Overweight \u{1F642}";
-                    }
-                    else if (messure >= 30 && messure <= 40) {
-                        bmiStatus.innerHTML = "Obesity \u{1F62E}";
-                    }
-                    else if (messure >= 40) {
-                        bmiStatus.innerHTML = "Severe Obesity \u{1F630}";
-                    }
-                    statusHeading.style.display = "block";
-
-                }
-                measure(weight.value, height.value)
-            }
-        })
-        function validateNum(input) {
-            input.value = input.value.replace(/[^0-9.]/g, '');
-        }
-
-
-    </script>
+    <script src="./index.js"></script>
 </body>
 
-</html> -->
+</html>
